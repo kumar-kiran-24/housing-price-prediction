@@ -61,3 +61,18 @@ plt.title("Actual vs Predicted Prices")
 plt.plot([y.min(), y.max()], [y.min(), y.max()], color='red', lw=2)  # Perfect line
 plt.show()
 
+# User Input Prediction
+print("\n--- Enter details to predict house price ---")
+user_data = []
+feature_names = x.columns.tolist()
+
+
+for col in feature_names:
+    value = float(input(f"Enter value for {col}: "))
+    user_data.append(value)
+
+# Convert to DataFrame for prediction
+user_df = pd.DataFrame([user_data], columns=feature_names)
+
+predicted_price = model.predict(user_df)[0]
+print(f"\nPredicted House Price: {predicted_price:.2f}")
